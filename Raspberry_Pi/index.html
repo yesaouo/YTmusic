@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MusicPlayer</title>
+  <style>
+    html, body {
+    background-color: #f1faee;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    }
+
+    audio {
+    width: 100%;
+    }
+
+    li {
+    border-bottom: 1px solid #457b9d;
+    }
+
+    #song-list {
+    margin: 0 auto;
+    }
+
+    #song-list ul {
+    list-style-type: none;
+    }
+
+    #song-list li {
+    padding: 5px;
+    cursor: pointer;
+    }
+
+    #song-list li:hover {
+    background-color: #f0f0f0;
+    color: #e63946;
+    }
+
+    #pos-fixed {
+    background-color: #1d3557;
+    color: white;
+    width: 90%;
+    position: fixed;
+    bottom: 3%;
+    left: 3%;
+    padding: 1% 2%;
+    border-radius: 10px;
+    }
+
+    #now-play {
+    overflow: hidden;
+    white-space: nowrap;
+    }
+
+    form {
+    display: flex;
+    flex-wrap: wrap;
+    }
+
+    #url{
+    flex-grow: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="song-list">
+    <ul>
+
+    </ul>
+  </div>
+
+  <div id="pos-fixed">
+    <div id="now-play"></div>
+    <audio id="player" controls loop></audio>
+    <form method="POST" action="index.php" onsubmit="document.getElementById('folder-path').value = path;" />
+      URL:
+      <input type="text" name="url" id="url" placeholder="https://www.youtube.com/"/>
+      <input type="submit" value="Download" name="download" />
+      <input type="button" value="Set Path" id="set-path" />
+      <input type="hidden" name="folder-path" id="folder-path" />
+    </form>
+  </div>
+  <form id="delete" method="POST" action="index.php" />
+    <input type="hidden" name="path" id="path" />
+    <input type="hidden" name="file-path" id="file-path">
+  </form>
+
+<script>
+  if (!localStorage.getItem('music-path')) {
+    localStorage.setItem('music-path','./Music');
+  }
+  let path = localStorage.getItem('music-path');
+  let setPath = document.getElementById('set-path');
+  setPath.onclick = function() {
+    let pathTemp = window.prompt('Set music location.',path);
+    if (pathTemp) {
+      path = pathTemp;
+      localStorage.setItem('music-path',path);
+    }
+  };
+</script>
+<script>
+  const player = document.getElementById("player");
+  const songList = document.getElementById("song-list");
+  const nowPlay = document.getElementById("now-play");
+  songList.addEventListener("click", (event) => {
+    if (event.target.tagName === "LI") {
+      const songSrc = event.target.getAttribute("data-src");
+      player.src = songSrc;
+      player.volume = 0.5;
+      player.play();
+      nowPlay.innerHTML = 'Now Playing: ' + songSrc.replace(path + '/','').replace('.mp3','')
+    }
+  });
+</script>
+<script>
+  var timeStart, timeEnd, time;
+  function getTimeNow() {
+    var now = new Date();
+    return now.getTime();
+  }
+  function holdDown(filePath) {
+    timeStart = getTimeNow();
+    time = setInterval(() =>{
+      timeEnd = getTimeNow();
+      if(timeEnd - timeStart > 1000) {
+        clearInterval(time);
+        if(window.prompt('Are you sure you want to delete this music?','yes') == 'yes'){
+          document.getElementById('path').value = path;
+          document.getElementById('file-path').value = filePath;
+          document.getElementById('delete').submit();
+        }
+      }
+    }, 100);
+  }
+  function holdUp() {
+    clearInterval(time);
+  }
+</script>
+</body>
+</html>
