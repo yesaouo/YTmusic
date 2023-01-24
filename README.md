@@ -37,10 +37,17 @@
       <a href="#about-the-project">About The Project</a>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#windows-mode-1">Windows mode</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#server-mode-1">Server mode</a>
+      <ul>
+        <li><a href="#prerequisites-1">Prerequisites</a></li>
+        <li><a href="#installation-1">Installation</a></li>
       </ul>
     </li>
   </ol>
@@ -87,29 +94,80 @@ There are many great YouTube downloader available on GitHub; however, my project
 * Windows mode allows users to easily download music on the computer and listen to local music on browser.
 * Server mode allows users to download and store music using a server host.
 
-Use the `Windows/README.md` / `Raspberry_Pi/README.md` to get started.
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- GETTING STARTED -->
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
+## Windows mode
+Use Windows 10 as a demonstration.
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
+* Setup terminal and pip
   ```sh
-  npm install npm@latest -g
+  python -m pip install --upgrade pip setuptools virtualenv
+  ```
+* Create virtual environment
+  ```sh
+  python -m virtualenv kivy_venv
+  kivy_venv\Scripts\activate
+  ```
+* Kivy
+  ```sh
+  pip install "kivy[base]" kivy_examples
+  ```
+* PyTube
+  ```sh
+  pip install pytube
+  ```
+* Pyinstaller
+  ```sh
+  pip install pyinstaller==5.6.2
   ```
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+1. Get a free API Key at [https://example.com](https://example.com)
+2. Clone the repo
+   ```sh
+   git clone https://github.com/your_username_/Project-Name.git
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Enter your API in `config.js`
+   ```js
+   const API_KEY = 'ENTER YOUR API';
+   ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+## Server mode
+Use Raspberry Pi 4 as a demonstration.
+### Prerequisites
+
+* Setup terminal and pip
+  ```sh
+  sudo apt-get update
+  ```
+  ```sh
+  sudo apt-get install apache2
+  ```
+  ```sh
+  sudo apt-get install python3
+  ```
+  ```sh
+  sudo apt install python3-pip
+  ```
+* PyTube
+  ```sh
+  sudo -H pip install pytube
+  ```
+
+### Installation
 
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
