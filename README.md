@@ -84,10 +84,10 @@ There are many great YouTube downloader available on GitHub; however, my project
   </p>
 </div>
 
-* Windows mode allows users to easily download YouTube music on the computer and listen to local music on the web.
-* Server mode allows users to download and store music using server hosts.
+* Windows mode allows users to easily download music on the computer and listen to local music on browser.
+* Server mode allows users to download and store music using a server host.
 
-Use the `BLANK_README.md` to get started.
+Use the `Windows/README.md` / `Raspberry_Pi/README.md` to get started.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
