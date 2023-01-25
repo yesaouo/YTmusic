@@ -101,46 +101,9 @@ There are many great YouTube downloader available on GitHub; however, my project
 <!-- GETTING STARTED -->
 ## Windows mode
 Use Windows 10 as a demonstration.
-### Prerequisites
-
-* Setup terminal and pip
-  ```sh
-  python -m pip install --upgrade pip setuptools virtualenv
-  ```
-* Create virtual environment
-  ```sh
-  python -m virtualenv kivy_venv
-  kivy_venv\Scripts\activate
-  ```
-* Kivy
-  ```sh
-  pip install "kivy[base]" kivy_examples
-  ```
-* PyTube
-  ```sh
-  pip install pytube
-  ```
-* Pyinstaller
-  ```sh
-  pip install pyinstaller==5.6.2
-  ```
 
 ### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
+Download `Windows/dist/YTmusic/` and execute the exe file.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -169,18 +132,11 @@ Use Raspberry Pi 4 as a demonstration.
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+1. ```sh
+   cd /var/www/html
    ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+2. Clone files in `Raspberry_Pi`
+3. Use `ifconfig` to find your ip
+4. Open browser and enter your ip
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
